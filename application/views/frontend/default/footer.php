@@ -63,7 +63,7 @@
                                 </form>
                             </div>
                             <div class="col-md-6">
-                                <form action="<?php echo site_url('home/bkash'); ?>" method="post">
+                                <form action="<?php echo site_url('home/stripe_checkout'); ?>" method="post">
                                     <input type="hidden" class = "total_price_of_checking_out" name="total_price_of_checking_out" value="">
                                     <button type="submit" class="btn btn-primary stripe" <?php echo $stripe_status; ?>><?php echo get_phrase('Bkash'); ?></button>
                                 </form>

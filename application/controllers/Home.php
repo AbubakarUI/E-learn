@@ -301,6 +301,17 @@ class Home extends CI_Controller {
         $this->load->view('frontend/'.get_frontend_settings('theme').'/bkash', $page_data);
     }
 
+    public function bkash_success() {
+        if ($this->session->userdata('user_login') != 1)
+        redirect('home', 'refresh');
+
+        $total_price_of_checking_out  = $this->input->post('total_price_of_checking_out');
+        $page_data['user_details']    = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
+        $page_data['amount_to_pay']   = $total_price_of_checking_out;
+        $this->load->view('frontend/'.get_frontend_settings('theme').'/bkash_success', $page_data);
+    }
+
+
     public function payment_success($method = "", $user_id = "", $amount_paid = "") {
         if ($method == 'stripe') {
             $token_id = $this->input->post('stripeToken');
